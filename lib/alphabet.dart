@@ -1,0 +1,111 @@
+
+import 'package:flutter/foundation.dart';
+import 'package:tll/aboutus.dart';
+import 'package:flutter/material.dart';
+import 'package:tll/Data/datamodel1.dart';
+import 'package:tll/Grid/alphabetgridview.dart';
+import 'package:tll/Data/getalphabet.dart';
+import 'package:http/http.dart' as http;
+
+
+void main() => runApp(new Alphabet());
+
+class Alphabet extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final appTitle = 'ทบทวน';
+    return new MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: appTitle,
+      theme: new ThemeData(
+        primaryColor: const Color(0xFF02BB9F),
+        primaryColorDark: const Color(0xFF167F67),
+        accentColor: const Color(0xFFFFAD32),
+      ),
+      home: new HomePage(title: appTitle),
+
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  final String title;
+
+  HomePage({Key key, this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("ฝึกอ่านพยัญชนะ"),
+        actions: <Widget>[
+          // action button
+          IconButton(
+            icon: Icon(Icons.help),
+            onPressed: () {
+              _showMaterialDialog(context);
+
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.account_box),
+            onPressed: () { //aboutUs();
+              Navigator.push(context, new MaterialPageRoute(builder: (context)=> new AboutUs()));
+              // _select(choices[1]);
+            },
+          ),
+          // action button
+
+          // overflow menu
+
+        ],
+      ),
+        body: new FutureBuilder<List<AlphabetDataModel>>(
+        future: fetchData(new http.Client(),"http://www.kidlovescode.com/gamethai/jason/alphabet.json"),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) print(snapshot.error);
+
+          return snapshot.hasData
+              ? new AlphabetGridView(alphabet: snapshot.data)
+              : new Center(child: new CircularProgressIndicator());
+        },
+
+      ),
+
+    //  new BasicAppBarSample(),
+
+    );
+  }
+  void _showMaterialDialog(context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('คำแนะนำ'),
+            content: Text('ฝึกอ่านพยัญชนะ \n'
+                'พยัญชนะมีทั้งหมด 44 ตัวอักษร \n'
+                ' \n'
+                '> กดปุ่มเพื่อฟังเสียงแล้วหัดออกเสียงตาม\n'
+                '> เเลื่อนดูตัวอักษร'),
+            actions: <Widget>[
+              FlatButton(
+                  onPressed: () {
+                    _dismissDialog(context);
+                  },
+                  child: Text('ปิด')),
+
+            ],
+          );
+        });
+  }
+
+
+  _dismissDialog(context) {
+    Navigator.pop(context);
+  }
+  void aboutUs(){
+   // setState(() {
+     // Navigator.push(context, new MaterialPageRoute(builder: (context)=> new AboutUs()));
+   // });
+  }
+}
