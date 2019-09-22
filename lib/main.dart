@@ -30,10 +30,8 @@ import 'package:tll/Quiz/quiz1.dart';
 void main() => runApp(NavigateMenu());
 
 class NavigateMenu extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() {
-    return new NavigateMenuState();
-  }
+  State createState() => new NavigateMenuState();
+
 }
 
 class Choice {
@@ -62,33 +60,33 @@ class NavigateMenuState extends State<NavigateMenu>{
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-        home: new Scaffold(
+    return  MaterialApp(
+        routes: <String, WidgetBuilder>{
+        '/': (BuildContext context) {
+        return   Scaffold(
+            appBar: AppBar(
+              title: const Text('Design Pattern'),
+              actions: <Widget>[
+                // action button
+                IconButton(
+                  icon: Icon(choices[0].icon),
+                  onPressed: () {
+                    // _select(choices[0]);
+                    _showMaterialDialog();
+                  },
+                ),
+                // action button
+                IconButton(
+                  icon: Icon(choices[1].icon),
+                  onPressed: () { aboutUs();
+                    // _select(choices[1]);
+                  },
+                ),
+                // overflow menu
 
-      appBar: AppBar(
-        title: const Text('Design Pattern'),
-        actions: <Widget>[
-          // action button
-          IconButton(
-            icon: Icon(choices[0].icon),
-            onPressed: () {
-              // _select(choices[0]);
-              _showMaterialDialog();
-            },
-          ),
-          // action button
-          IconButton(
-            icon: Icon(choices[1].icon),
-            onPressed: () { aboutUs();
-              // _select(choices[1]);
-            },
-          ),
-          // overflow menu
-
-        ],
-      ),
-
-      body:   CustomScrollView(
+              ],
+            ),
+                body: new CustomScrollView(
                     slivers: <Widget>[
                       SliverPadding(
                         padding: EdgeInsets.all(16.0),
@@ -101,7 +99,11 @@ class NavigateMenuState extends State<NavigateMenu>{
                                   child: InkWell(
                                       splashColor: Colors.blue.withAlpha(30),
                                       onTap: () {
-                                        startMiniGameAlphabet();
+
+                                        setState(() {
+
+                                         Navigator.push(context, new MaterialPageRoute(builder: (context)=> new SelectPattern()));
+                                        });
                                       },
                                       child:
                                       Row(
@@ -129,7 +131,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startMiniGameQuiz1();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz1()));
+                                          });
                                         },
                                         child:
                                         Row(
@@ -157,7 +161,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startMiniGameQuiz2();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz2()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -183,7 +189,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startMiniGameQuiz3();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quiz3()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -209,7 +217,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startMiniGameQuiz4();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new QuizText()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -235,7 +245,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                       splashColor: Colors.blue.withAlpha(30),
                                       onTap: () {
-                                        startTonemark();
+                                        setState(() {
+                                          Navigator.push(context, new MaterialPageRoute(builder: (context)=> new WordTone()));
+                                        });
                                       },
                                       child: Row(
                                         children: <Widget>[
@@ -261,7 +273,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                       splashColor: Colors.blue.withAlpha(30),
                                       onTap: () {
-                                        startTonemark2();
+                                        setState(() {
+                                          Navigator.push(context, new MaterialPageRoute(builder: (context)=> new SliderGrid()));
+                                        });
                                       },
                                       child: Row(
                                         children: <Widget>[
@@ -287,7 +301,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startTonemark3();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new ToneMarkPractise()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -313,7 +329,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startMatching();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new DragScreen()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -338,7 +356,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startFillIn1();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new SortWord()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -363,7 +383,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startFillIn2();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new FillTheBlank()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -388,7 +410,10 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startGridSelection();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new GridSelection(0)));
+                                          });
+
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -414,7 +439,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startScrabble();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new WordScrabble(0)));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -439,7 +466,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startCombineWord();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new CombineWordPtr()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -464,7 +493,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startDrawHand();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Draw()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -489,7 +520,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startOrdering1();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new OrderingEvent()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -514,7 +547,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startOrdering2();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new OrderingEventImg()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -539,7 +574,9 @@ class NavigateMenuState extends State<NavigateMenu>{
                                     child: InkWell(
                                         splashColor: Colors.blue.withAlpha(30),
                                         onTap: () {
-                                          startHangman();
+                                          setState(() {
+                                            Navigator.push(context, new MaterialPageRoute(builder: (context)=> new Quessing()));
+                                          });
                                         },
                                         child: Row(
                                           children: <Widget>[
@@ -565,15 +602,19 @@ class NavigateMenuState extends State<NavigateMenu>{
 
                       ),
 
-                ]),
+                ],
 
-            ));
+         ));
+        }
+
+        },
+                      );
 
 
 
       }
-
-  void startMiniGameAlphabet(){
+/* Not call
+  void startMiniGameAlphabet(BuildContext context){
     setState(() {
       Navigator.push(context, new MaterialPageRoute(builder: (context)=> new SelectPattern()));
     });
@@ -689,6 +730,7 @@ class NavigateMenuState extends State<NavigateMenu>{
       Navigator.push(context, new MaterialPageRoute(builder: (context)=> new DragScreen()));
     });
   }
+  */
   void aboutUs(){
     setState(() {
       Navigator.push(context, new MaterialPageRoute(builder: (context)=> new AboutUs()));
@@ -701,11 +743,11 @@ class NavigateMenuState extends State<NavigateMenu>{
         builder: (context) {
           return AlertDialog(
             title: Text('คำแนะนำ'),
-            content: Text('ฝึกอ่านพยัญชนะ และสระในภาษาไทย \n'
-                'พยัญชนะมีทั้งหมด 44 ตัวอักษร \n'
-                'สระมีทั้งหมด 21 เสียง \n'
-                '> กดปุ่มเพื่อเลือกเฝึกอ่าน หรือ\n'
-                '> เล่นเกมเพื่อทบทวน'),
+            content: Text('รูปแบบการออกแบบเกม \n'
+                'ใช้เพื่อนำไปพัฒนาเกม \n'
+
+                '> กดเลือกรูปแบบแล้วทดลองเล่น\n'
+                'Back กดย้อนกลับไปเมนู'),
             actions: <Widget>[
               FlatButton(
                   onPressed: () {
