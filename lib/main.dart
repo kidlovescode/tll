@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tll/aboutus.dart';
 import 'package:tll/alphabet.dart';
 import 'package:tll/vowel.dart';
-import 'package:tll/patternalphabetquiz.dart';
 
 import 'package:tll/trainpattern/minigamealphabet.dart';
 
 import 'package:tll/trainpattern/minigamevowel.dart';
-import 'package:flutter/material.dart';
-import 'package:tll/aboutus.dart';
-import 'package:tll/alphabet.dart';
-import 'package:tll/vowel.dart';
+
 import 'package:tll/Quiz/alphabetquiz.dart';
 
 import 'package:tll/trainpattern/minigamealphabet.dart';
@@ -22,7 +18,6 @@ import 'package:tll/patternfillintheblank.dart';
 import 'package:tll/tone/patterntone1.dart';
 import 'package:tll/patterngridselection.dart';
 import 'package:tll/patternscrapble.dart';
-import 'package:tll/trainpattern/minigamevowel.dart';
 import 'package:tll/trainpattern/patternmatchcombine.dart';
 import 'package:tll/drawhand.dart';
 import 'package:tll/patternhangman.dart';
@@ -32,15 +27,6 @@ import 'package:tll/Quiz/quiz3.dart';
 import 'package:tll/Quiz/quiz2.dart';
 import 'package:tll/Quiz/quiz1.dart';
 
-/*
-void main(){
-  runApp(
-      new MaterialApp(
-        home: new NavigateMenu(),
-      )
-  );
-}
-*/
 void main() => runApp(NavigateMenu());
 
 class NavigateMenu extends StatefulWidget{
@@ -76,7 +62,8 @@ class NavigateMenuState extends State<NavigateMenu>{
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return new MaterialApp(
+        home: new Scaffold(
 
       appBar: AppBar(
         title: const Text('Design Pattern'),
@@ -101,22 +88,7 @@ class NavigateMenuState extends State<NavigateMenu>{
         ],
       ),
 
-      body: new Container(
-        color: Colors.white,
-        //margin: const EdgeInsets.all(25.0),
-        child: new Column(
-
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-
-              children: <Widget>[
-
-                Container(
-                  height: 550.0,
-
-                  //onPressed: startQuiz,
-                  child:
-                  CustomScrollView(
+      body:   CustomScrollView(
                     slivers: <Widget>[
                       SliverPadding(
                         padding: EdgeInsets.all(16.0),
@@ -593,31 +565,9 @@ class NavigateMenuState extends State<NavigateMenu>{
 
                       ),
 
-                    ],
-                  ),
+                ]),
 
-                  /*
-                      new Text("หมวดการเรียนรู้ฝึกอ่านออกเสียง",
-                        style: new TextStyle(
-                            fontSize: 18.0,
-                            color: Colors.white
-                        ),), onPressed: () {},
-                    */
-                ),
-
-                Container(
-                  height:50,
-
-                )
-
-              ],
-
-            )
-
-        ),
-      );
-
-
+            ));
 
 
 
