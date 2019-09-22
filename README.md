@@ -7,9 +7,9 @@ A new Flutter application. The codes of GameBox platform. The name is 'tll' just
 
 This project is a starting point for a Flutter application.
 Warning: A code may work independently. 
-main.dart is not work. I don't know why. But you can use the mainminigame.dart for running the program to see the design pattern. 
+You can run from main.dart. 
 Each design pattern has a core profile, however, it may call to other profiles. 
-Some codes may be quite similar to others and may share the similar other codes. Refactoring codes are important issue to deal with when time comes. 
+Some codes are redundant to others. Refactoring codes are important issue to deal with when time comes. 
 
 Enjoy!!!
 
